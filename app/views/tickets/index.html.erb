@@ -1,0 +1,21 @@
+<ul>
+	<li><%= link_to 'Dashboard', controller: 'tickets' %></li>
+	<li><%= link_to 'Submit', controller: 'tickets', action: 'new' %></li>
+</ul>
+<div class="form-panel">
+	<h2>Ticket Summary:</h2>
+	<% @tickets.each do |ticket| %>
+		<div>
+			<b>Title: </b>
+			<%= ticket.title %> 
+		</div>
+		<div>
+			<b>Application: </b>
+			<%= ticket.application %>
+		</div>
+		<div style="margin-bottom:20px">
+			<b>Summary: </b>
+			<%= ticket.summary %> 
+		</div>
+	<% end %>
+</div>

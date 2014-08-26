@@ -1,0 +1,21 @@
+
+<%= form_for :ticket, url: tickets_path do |f| %> 
+	<div class="form-panel">
+		<h2>Ticket - New</h2>
+		<div class="inputs">
+			<%= f.label :title, class: "frm-ctrl" %>
+			<%= f.text_field :title, class: "frm-ctrl txt" %>
+		</div>
+		<div class="inputs">
+			<%= f.label :application, class: "frm-ctrl txt" %>
+			<%= f.text_field :application, class: "frm-ctrl txt" %>
+		<div class="inputs">
+			<%= f.label :summary, class: "frm-ctrl txt" %>
+			<%= f.text_area :summary, class: "frm-ctrl" %>
+		</div>
+
+		<div class="inputs">
+			<%= f.submit %> 
+		</div>
+	</div>
+<% end %> 
