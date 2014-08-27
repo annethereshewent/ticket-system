@@ -54,6 +54,11 @@ h2 {
 	font-size:24px;
 	color:$heading_text;
 }
+h3 {
+	font-size:14px;
+	margin-top:-10px;
+	font-family:"Calibri";
+}
 ul {
 	list-style-type:none;
 	li {
@@ -73,4 +78,41 @@ ul {
 		margin-left:20px;
 		margin-right:20px;
 	}
+}
+.col {
+	display:table-cell;
+	border: solid black 1px;
+	padding-left:20px;
+	padding-right:20px;
+	color:#8F006B;
+	font-family:"Calibri";
+
+}
+.row {
+	display:table-row;
+}
+.btn {
+	width:60px;
+	height:20px;
+	border-radius:$text_radius;
+	&.btn-main {
+		background:#7AA3CC;
+	}
+	&.btn-warn {
+		background:#FFCC00;
+	}
+}
+.tbl {
+	display:table;
+}
+.ticket-table {
+	width:75%;
+	margin-left:15%;
+	a {
+		text-decoration:none;
+		color:purple;
+	}
+}
+table {
+	border-collapse:collapse;
 }

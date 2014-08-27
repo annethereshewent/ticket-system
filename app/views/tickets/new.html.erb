@@ -1,5 +1,6 @@
 
 <%= form_for :ticket, url: tickets_path do |f| %> 
+	<%= @errormsg %>
 	<div class="form-panel">
 		<h2>Ticket - New</h2>
 		<div class="inputs">
@@ -9,13 +10,14 @@
 		<div class="inputs">
 			<%= f.label :application, class: "frm-ctrl txt" %>
 			<%= f.text_field :application, class: "frm-ctrl txt" %>
+		</div>
 		<div class="inputs">
 			<%= f.label :summary, class: "frm-ctrl txt" %>
 			<%= f.text_area :summary, class: "frm-ctrl" %>
 		</div>
-
 		<div class="inputs">
-			<%= f.submit %> 
+			<%= f.submit "Submit", class: "frm-ctrl btn btn-main" %> 
 		</div>
 	</div>
+	<%= link_to 'Back', tickets_path, style: "margin-left:420px" %>
 <% end %> 

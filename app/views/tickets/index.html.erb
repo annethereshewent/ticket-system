@@ -1,8 +1,8 @@
 <ul>
-	<li><%= link_to 'Dashboard', controller: 'tickets' %></li>
-	<li><%= link_to 'Submit', controller: 'tickets', action: 'new' %></li>
+	<li><%= link_to 'Dashboard', tickets_path %></li>
+	<li><%= link_to 'Submit', new_ticket_path %></li>
 </ul>
-<div class="form-panel">
+<!--<div class="form-panel">
 	<h2>Ticket Summary:</h2>
 	<% @tickets.each do |ticket| %>
 		<div>
@@ -18,4 +18,27 @@
 			<%= ticket.summary %> 
 		</div>
 	<% end %>
+</div> -->
+
+<div class="form-panel ticket-table"> 
+	<h2>Tickets in Queue</h2>
+	<h3>Click on a ticket to edit its contents.</h3>
+	<table>
+		<% color = 0 %>
+		<% @tickets.each do |ticket| %>	
+			<tr onClick="location.href='<%= edit_ticket_path(ticket)%>'">					
+				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
+					<%= ticket.title %> 
+				</td>			
+				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
+					<%= ticket.application %>
+				</td>
+
+				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
+					<%= ticket.summary %>
+				</td>
+			</tr>
+			<% color = color == 0 ? 1 : 0 %>
+		<% end %> 
+	</table>
 </div>

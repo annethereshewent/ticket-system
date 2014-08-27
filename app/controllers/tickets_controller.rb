@@ -13,8 +13,12 @@ class TicketsController < ApplicationController
 	def create 
 		@ticket = Ticket.new(ticket_params)
 
-		@ticket.save
-		redirect_to @ticket
+		if @ticket.save
+			redirect_to @ticket
+		else
+			@errormsg = '<p style="color:red">An error has occurred</p>'
+			render 'new'
+		end
 	end
 
 	def index
