@@ -59,17 +59,21 @@ h3 {
 	margin-top:-10px;
 	font-family:"Calibri";
 }
-ul {
+.nav {
 	list-style-type:none;
+	top:-20;
+	left:-20;
+	margin-left:40px;
+	margin-bottom:-2px;
+	display:inline-block;
 	li {
 		width:100px;
 		display:inline;
-		background:$accent_bg;
+		background:#457272;
 		-webkit-border-radius:$text_radius;
 		-moz-border-radius:$text_radius;
 		border-radius:$text_radius;
 		border: 1px solid black;
-		box-shadow: 2px 2px grey;
 		margin-right:-5px;
 	}
 	a {
@@ -84,7 +88,7 @@ ul {
 	border: solid black 1px;
 	padding-left:20px;
 	padding-right:20px;
-	color:#8F006B;
+	color: #4C0066;
 	font-family:"Calibri";
 
 }
@@ -106,13 +110,11 @@ ul {
 	display:table;
 }
 .ticket-table {
-	width:75%;
-	margin-left:15%;
-	a {
-		text-decoration:none;
-		color:purple;
-	}
+	width:1080px;
+	margin-left:60px;
+	margin-top:0px;
 }
+
 table {
 	border-collapse:collapse;
 }

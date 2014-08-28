@@ -4,25 +4,30 @@ class TicketsController < ApplicationController
 	end
 	
 	def new
+		@applications = Application.all
 	end
 
 	def show
-		@ticket = Ticket.find(params[:id])
+		@tickets = Ticket.all
+		render 'index'
 	end
 
 	def create 
 		@ticket = Ticket.new(ticket_params)
 
 		if @ticket.save
-			redirect_to @ticket
+			redirect_to tickets_path
 		else
 			@errormsg = '<p style="color:red">An error has occurred</p>'
 			render 'new'
 		end
 	end
-
+	def edit
+		@applications = Application.all
+		@ticket = Ticket.find(params[:id])
+	end
 	def index
-		@tickets = Ticket.all
+		@tickets = Ticket.all;
 	end
 	private
 		def ticket_params

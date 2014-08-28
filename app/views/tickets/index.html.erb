@@ -1,24 +1,7 @@
-<ul>
+<ul class ="nav">
 	<li><%= link_to 'Dashboard', tickets_path %></li>
 	<li><%= link_to 'Submit', new_ticket_path %></li>
 </ul>
-<!--<div class="form-panel">
-	<h2>Ticket Summary:</h2>
-	<% @tickets.each do |ticket| %>
-		<div>
-			<b>Title: </b>
-			<%= ticket.title %> 
-		</div>
-		<div>
-			<b>Application: </b>
-			<%= ticket.application %>
-		</div>
-		<div style="margin-bottom:20px">
-			<b>Summary: </b>
-			<%= ticket.summary %> 
-		</div>
-	<% end %>
-</div> -->
 
 <div class="form-panel ticket-table"> 
 	<h2>Tickets in Queue</h2>
@@ -26,12 +9,15 @@
 	<table>
 		<% color = 0 %>
 		<% @tickets.each do |ticket| %>	
-			<tr onClick="location.href='<%= edit_ticket_path(ticket)%>'">					
+			<tr onClick="location.href='<%= edit_ticket_path(ticket)%>'">	
+				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
+					Submitted: <%= ticket.created_at %>  
+				</td>				
 				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
 					<%= ticket.title %> 
 				</td>			
 				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
-					<%= ticket.application %>
+					<%= Application.getAppName(ticket.application) %>
 				</td>
 
 				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
