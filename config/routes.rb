@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-   get 'welcome/index'
-
+   # get 'welcome/index'
+   get '/tickets/closed' => 'tickets#closed', as: 'closed_tickets'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -58,7 +58,11 @@ Rails.application.routes.draw do
 end
 
 TicketSystem::Application.routes.draw do 
-  resources :tickets
-
+  resources :tickets do
+    resources :comments
+  end
   root 'tickets#index'
+
 end
+
+

@@ -1,0 +1,30 @@
+<h2>Closed Tickets in Queue</h2>
+<h3>Click on a ticket to edit its contents.</h3>
+<table>
+	<th>Submitted</th>
+	<th>Ticket</th>
+	<th>Application</th>
+	<th>Status</th>
+	<th>Summary</th>
+	<% color = 0 %>
+	<% @tickets.each do |ticket| %>	
+		<tr onClick="location.href='<%= edit_ticket_path(ticket)%>'">	
+			<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
+				<%= ticket.created_at.strftime("%m/%d/%y") %>  
+			</td>				
+			<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
+				<%= ticket.title %> 
+			</td>			
+			<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
+				<%= Application.getAppName(ticket.application) %>
+			</td>
+			<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
+				<%= TicketStatus.getStatus(ticket.ticket_status) %>
+			<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
+				<%= ticket.summary %>
+			</td>
+		</tr>
+		<% color = color == 0 ? 1 : 0 %>
+	<% end %> 
+</table>
+

@@ -1,22 +1,4 @@
-
-<%= form_for :ticket, url: tickets_path do |f| %> 
-	<div class="form-panel">
-		<h2>Ticket - New</h2>
-		<div class="inputs">
-			<%= f.label :title, class: "frm-ctrl" %>
-			<%= f.text_field :title, class: "frm-ctrl txt", value: @ticket.title %>
-		</div>
-		<div class="inputs">
-			<%= f.label :application, class: "frm-ctrl txt" %>
-			<%= f.text_field :application, class: "frm-ctrl txt", value: @ticket.application %>
-		</div>
-		<div class="inputs">
-			<%= f.label :summary, class: "frm-ctrl txt" %>
-			<%= f.text_area :summary, class: "frm-ctrl", value: @ticket.summary %>
-		</div>
-		<div class="inputs">
-			<%= f.submit "Save", class: "frm-ctrl btn btn-main" %> 
-		</div>
-	</div>
-	<%= link_to 'Back', tickets_path, style: "margin-left:420px" %>
-<% end %> 
+<%= render partial: 'edit', locals: {ticket: @ticket} %>
+<%= render partial: 'comments', locals: {ticket: @ticket} %>
+<%= link_to 'Back', tickets_path, style: "margin-left:220px" %>
+ 

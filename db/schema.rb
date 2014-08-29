@@ -11,21 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828150717) do
+ActiveRecord::Schema.define(version: 20140829062334) do
 
   create_table "applications", force: true do |t|
-    t.string   "name"
+    t.string "name"
+  end
+
+  create_table "comments", force: true do |t|
+    t.integer  "user"
+    t.text     "body"
     t.integer  "ticket_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
+
+  create_table "ticket_statuses", force: true do |t|
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "applications", ["ticket_id"], name: "index_applications_on_ticket_id", using: :btree
-
   create_table "tickets", force: true do |t|
     t.string   "title"
-    t.string   "application"
+    t.integer  "application"
     t.string   "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "ticket_status", default: 1
+    t.integer  "user_id"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "usenamer"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,30 +1,10 @@
 <ul class ="nav">
 	<li><%= link_to 'Dashboard', tickets_path %></li>
 	<li><%= link_to 'Submit', new_ticket_path %></li>
+	<li><%= link_to "Closed Tickets", closed_tickets_path, :remote => true %></li>
 </ul>
 
-<div class="form-panel ticket-table"> 
-	<h2>Tickets in Queue</h2>
-	<h3>Click on a ticket to edit its contents.</h3>
-	<table>
-		<% color = 0 %>
-		<% @tickets.each do |ticket| %>	
-			<tr onClick="location.href='<%= edit_ticket_path(ticket)%>'">	
-				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
-					Submitted: <%= ticket.created_at %>  
-				</td>				
-				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
-					<%= ticket.title %> 
-				</td>			
-				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
-					<%= Application.getAppName(ticket.application) %>
-				</td>
-
-				<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
-					<%= ticket.summary %>
-				</td>
-			</tr>
-			<% color = color == 0 ? 1 : 0 %>
-		<% end %> 
-	</table>
+<div class="form-panel ticket-table" id="main-table"> 
+	<%= render partial: 'index', locals: {tickets: @tickets} %>
 </div>
+<img src="/images/loading.gif" style="display:none" id="ticket-loading">

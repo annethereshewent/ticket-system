@@ -1,0 +1,24 @@
+<%= form_for @ticket do |f| %> 
+	<div class="form-panel">
+		<h2><%= "#{ticket.id} - #{ticket.title}"%></h2>
+		<div class="inputs">
+			<%= f.label :title, class: "frm-ctrl" %>
+			<%= f.text_field :title, class: "frm-ctrl txt"  %>
+		</div>
+		<div class="inputs">
+			<%= f.label :application, class: "frm-ctrl" %>
+			<%= collection_select(:ticket, :application, @applications, :id, :name) %>
+		</div>
+		<div class="inputs">
+			<%= f.label :status, class: "frm-ctrl" %>
+			<%= collection_select(:ticket, :ticket_status, @t_statuses, :id, :status) %>
+		</div>
+		<div class="inputs">
+			<%= f.label :summary, class: "frm-ctrl" %>
+			<%= f.text_area :summary, class: "frm-ctrl" %>
+		</div>
+		<div class="inputs">
+			<%= f.submit "Save", class: "frm-ctrl btn btn-main" %> 
+		</div>
+	</div>
+<% end %>

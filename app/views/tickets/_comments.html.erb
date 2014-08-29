@@ -1,0 +1,19 @@
+<div class="form-panel" style="margin-top:20px">
+	<div class="comments-section">
+		<% @ticket.comments.each do |comment| %>
+			<div>
+				<hr>
+				<h3><%= "#{comment.user}:" %></h3>
+				<p><%= comment.body %></p>
+			</div> 
+		<% end %>
+	</div>
+		<%= form_for([@ticket, @ticket.comments.build]) do |f| %>
+		<div class="inputs">
+			<%= f.text_area :body, class: "frm-ctrl txt" %> 
+		</div>
+		<div class="inputs">
+			<%= f.submit "Save", class: "frm-ctrl btn btn-main" %>
+		<% end %>
+	</div>
+</div>
