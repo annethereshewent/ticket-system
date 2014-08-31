@@ -11,6 +11,15 @@ $content_radius: 10px;
 .inputs {
 	margin-bottom:10px;
 }
+.error {
+	display:none;
+	color:$heading_text;
+	font-size:11px;
+}
+.flash {
+	color:$heading_text;
+	font-size:11px;
+}
 .frm-ctrl {
 	display:block;
 }
@@ -96,12 +105,20 @@ h3 {
 	width:60px;
 	height:20px;
 	border-radius:$text_radius;
+	display:inline-block;
 	&.btn-main {
 		background:#7AA3CC;
 	}
 	&.btn-warn {
 		background:#FFCC00;
 	}
+	&.btn-cancel {
+		background: #B8005C;
+	}
+}
+.btn.lg {
+	width:140px;
+	height:25px;
 }
 .tbl {
 	display:table;
@@ -114,4 +131,5 @@ h3 {
 
 table {
 	border-collapse:collapse;
+	margin: 0 20px 20px 20px
 }

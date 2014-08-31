@@ -1,0 +1,24 @@
+<div class="form-panel" id="loginPanel">
+	<h2>Please Sign In</h2>
+	<%= form_for :user, url: authenticate_user_path do |f| %>
+		<div class="inputs">
+			<%= f.label :username, class: "frm-ctrl" %>
+			<%= f.text_field :username, class: "frm-ctrl txt", name:"log_user" %>
+		</div>
+		<div class="inputs">
+			<%= f.label :password, class: "frm-ctrl" %>
+			<%= f.password_field :password, class: "frm-ctrl txt", name:"log_pass" %>
+		</div>
+		<div class="inputs">
+			<%= f.submit "Ok", class: "frm-ctrl btn btn-main lg" %>
+		</div>
+		<div class="inputs">
+			<a href="#" onClick="openRegister();return false;" style="font-size:11px">New User?</a>
+		</div>
+			<p class="flash"><%= flash[:alert] %></p>
+
+	<% end %>
+</div>
+<%= render partial: "register" %>
+
+<script src="javascripts/users.js" type="text/javascript"></script>

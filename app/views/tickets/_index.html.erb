@@ -1,4 +1,4 @@
-<h2>Tickets in Queue</h2>
+<h2>Tickets in Queue - <%= session[:username] %></h2>
 <h3>Click on a ticket to edit its contents.</h3>
 <table>
 	<th>Submitted</th>
@@ -8,7 +8,7 @@
 	<th>Summary</th>
 	<% color = 0 %>
 	<% @tickets.each do |ticket| %>	
-		<tr onClick="location.href='<%= edit_ticket_path(ticket)%>'">	
+		<tr onClick="location.href='<%= edit_user_ticket_path(session[:user_id],ticket)%>'">	
 			<td class="col" style="background: <%= color == 0 ? "#197547" : "#33D996" %>">
 				<%= ticket.created_at.strftime("%m/%d/%y") %>  
 			</td>				

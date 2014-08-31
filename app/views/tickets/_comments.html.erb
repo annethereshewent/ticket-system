@@ -3,17 +3,20 @@
 		<% @ticket.comments.each do |comment| %>
 			<div>
 				<hr>
-				<h3><%= "#{comment.user}:" %></h3>
-				<p><%= comment.body %></p>
+				<div style="margin: 20px 0 0 20px">
+					<h3><%= "#{User.find(comment.user_id).username}:" %></h3>
+					<p><%= comment.body %></p>
+				</div>
 			</div> 
 		<% end %>
 	</div>
-		<%= form_for([@ticket, @ticket.comments.build]) do |f| %>
+		<%= form_for ([@ticket, @ticket.comments.build]) do |f| %>
 		<div class="inputs">
 			<%= f.text_area :body, class: "frm-ctrl txt" %> 
 		</div>
 		<div class="inputs">
-			<%= f.submit "Save", class: "frm-ctrl btn btn-main" %>
+			<%= f.submit "Submit", class: "frm-ctrl btn btn-main" %>
+		</div>
 		<% end %>
 	</div>
 </div>

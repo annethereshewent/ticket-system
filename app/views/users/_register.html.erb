@@ -1,0 +1,25 @@
+<div class="form-panel" id="registerPanel" style="display:none">
+	<h2>Please fill in the required fields.</h2>
+	<%= form_for :user, url: users_path, :html => { :id => "register-form" } do |f| %> 
+		<div class="inputs">
+			<%= f.label :username, class: "frm-ctrl" %>
+			<%= f.text_field :username, class: "frm-ctrl txt", id: "reg-username" %>
+			<p class="error" id="username-error"></p>
+		</div>
+		<div class="inputs">
+			<%= f.label :password, class: "frm-ctrl" %>
+			<%= f.password_field :password, class: "frm-ctrl, txt", id: "reg-password" %>
+			<p class="error" id="password-error"></p> 
+		</div>
+		<div class="inputs" style="margin-bottom:20px">
+			<%= f.label  "Re-enter Password", class: "frm-ctrl" %>
+			<%= f.password_field :password_confirmation, class: "frm-ctrl, txt", id: "reg-password2" %>
+			<p class="error" id="password2-error"></p> 
+		</div>
+		<div>
+			<button type="button" class="btn btn-main lg" onClick="validate()" style="margin-right:20px">Submit</button>
+			<button type="button" class="btn btn-cancel lg" onClick="closeRegister()">Back</button>
+		</div>
+	<% end %>
+	<img src="images/loading.gif" style="display:none" id="reg-loading">
+</div>

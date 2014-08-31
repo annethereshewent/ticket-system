@@ -4,6 +4,7 @@ class TicketsController < ApplicationController
 	end
 	
 	def new
+		@user = User.find(session[:user_id])
 		@applications = Application.all
 	end
 
@@ -27,10 +28,10 @@ class TicketsController < ApplicationController
 			format.js
 		end
 	end
-	def create 
-		@ticket = Ticket.new(ticket_params)
+	def create
+		@user = User.find(session[:user_id])
 
-		if @ticket.save
+		if (@ticket = @user.tickets.create(ticket_params))
 			redirect_to tickets_path
 		else
 			@errormsg = '<p style="color:red">An error has occurred</p>'
@@ -40,15 +41,17 @@ class TicketsController < ApplicationController
 	def edit
 		@applications = Application.all
 		@t_statuses = TicketStatus.all
-		@ticket = Ticket.find(params[:id])
-		
-	
+		@user = User.find(session[:user_id])
+		@ticket = Ticket.find(params[:id])	
 	end
 	
 	def index
-		@tickets = Ticket.where.not(ticket_status: 2).order("created_at DESC");
+		if session[:user_id]
+			@tickets = Ticket.where("user_id = ? and ticket_status = ?", session[:user_id], 1).order("created_at DESC")
+		else
+			redirect_to root_path
+		end
 	end
-
 	private
 		def ticket_params
 			params.require(:ticket).permit(:title, :application, :ticket_status, :summary)

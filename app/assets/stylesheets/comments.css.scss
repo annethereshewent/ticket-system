@@ -12,13 +12,15 @@ $text_radius: 5px;
 	height:80px;
 }
 .comments-section {
-	background:#75A3A3;
+	//FFE0FF
+	background:#33D996;
 	-moz-border-radius:$text_radius;
 	-webkit-border-radius:$text_radius;
 	border-radius:$text_radius;
 	border: 1px solid grey;
 	margin-bottom:20px;
 	box-shadow: 5px 5px 10px grey;
+	border: solid 1px grey;
 	padding-left:20px;
 	padding-top:20px;
 }

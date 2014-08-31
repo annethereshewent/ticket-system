@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
    # get 'welcome/index'
-   get '/tickets/closed' => 'tickets#closed', as: 'closed_tickets'
+   get '/tickets/closed'           => 'tickets#closed', as: 'closed_tickets'
+   post '/users/authenticate'      => 'users#authenticate', as: 'authenticate_user'
+   get '/users/validate/:username' => 'users#validate', as: 'validate_user'
+   get 'users/logout'              => 'users#logout', as: "logout_user" 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -58,10 +62,13 @@ Rails.application.routes.draw do
 end
 
 TicketSystem::Application.routes.draw do 
+  resources :users do
+    resources :tickets
+  end
   resources :tickets do
     resources :comments
   end
-  root 'tickets#index'
+  root 'users#index'
 
 end
 
