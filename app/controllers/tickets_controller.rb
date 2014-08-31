@@ -13,7 +13,7 @@ class TicketsController < ApplicationController
 		render 'index'
 	end
 	def update 
-		@ticket = Ticket.find(params[:id])
+		@ticket = user.tickets.find(params[:id])
 
 		if @ticket.update(ticket_params)
 			@tickets = Ticket.all
@@ -29,19 +29,17 @@ class TicketsController < ApplicationController
 		end
 	end
 	def create
-		@user = User.find(session[:user_id])
+		user = User.find(session[:user_id])
 
-		if (@ticket = @user.tickets.create(ticket_params))
+		if (@ticket = user.tickets.create(ticket_params))
 			redirect_to tickets_path
 		else
-			@errormsg = '<p style="color:red">An error has occurred</p>'
-			render 'new'
+			render 'new', alert: "Unable to submit ticket. An error has occurred."
 		end
 	end
 	def edit
 		@applications = Application.all
 		@t_statuses = TicketStatus.all
-		@user = User.find(session[:user_id])
 		@ticket = Ticket.find(params[:id])	
 	end
 	
