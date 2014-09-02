@@ -72,33 +72,14 @@
 <main role="main" aria-label="Page README.rdoc">
 
 <h2 id="label-README"><a href="README_rdoc.html">README</a><span><a href="#label-README">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-
-<p>This <a href="README_rdoc.html">README</a> would normally document whatever
-steps are necessary to get the application up and running.</p>
-
-<p>Things you may want to cover:</p>
-<ul><li>
-<p>Ruby version</p>
-</li><li>
-<p>System dependencies</p>
-</li><li>
-<p>Configuration</p>
-</li><li>
-<p>Database creation</p>
-</li><li>
-<p>Database initialization</p>
-</li><li>
-<p>How to run the test suite</p>
-</li><li>
-<p>Services (job queues, cache servers, search engines, etc.)</p>
-</li><li>
-<p>Deployment instructions</p>
-</li><li>
-<p>…</p>
-</li></ul>
-
-<p>Please feel free to use a different markup language if you do not plan to
-run <code>rake doc:app</code>.</p>
+  <h3>Ticket System</h3>
+  <p>This is a ticket system written in Ruby on Rails, designed to keep track of work I am doing on my projects. Current features allow users to create an account and submit tickets, as well as post comments on tickets and edit them if needed. Tickets can currently be opened or closed. A ticket is considered closed when the work on it is finished, and there is a separate queue to view closed tickets.</p>
+  <p>Still need to implement:</p>
+  <ul>
+    <li>Make the Ajax to switch between the closed and open queue work properly.</li>
+    <li>Implement other statuses such as putting tickets on hold, have a way to prioritize work.</li>
+    <li>Allow users to comment on any ticket, including other user's tickets.</li>
+ </ul>
 </main>
 
 
