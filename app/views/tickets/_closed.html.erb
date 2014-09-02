@@ -1,5 +1,11 @@
 <h2>Closed Tickets in Queue</h2>
 <h3>Click on a ticket to edit its contents.</h3>
+<div style="margin-bottom:20px">
+	<%= radio_button_tag 'status2', 'open', false %>
+	<%= label_tag :status, 'Open', style: "font-size:12px"  %>
+	<%= radio_button_tag 'status2', 'closed', true %>
+	<%= label_tag :status, 'Closed', style: "font-size:12px"  %>
+</div>
 <table>
 	<th>Submitted</th>
 	<th>Ticket</th>
@@ -27,4 +33,4 @@
 		<% color = color == 0 ? 1 : 0 %>
 	<% end %> 
 </table>
-
+<script src="/javascripts/tickets.js"></script>

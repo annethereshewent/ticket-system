@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 	def create
 		@user = User.find(session[:user_id])
 		@ticket = @user.tickets.find(params[:ticket_id])
+		@ticket.update({:ticket_status => 1, :updated_at => DateTime.now})
 		@comment = @ticket.comments.create(comment_params)
 		redirect_to edit_ticket_path(@ticket)
 	end

@@ -13,6 +13,7 @@ class TicketsController < ApplicationController
 		render 'index'
 	end
 	def update 
+		user = User.find(session[:user_id])
 		@ticket = user.tickets.find(params[:id])
 
 		if @ticket.update(ticket_params)
@@ -22,11 +23,17 @@ class TicketsController < ApplicationController
 			render 'edit'
 		end
 	end  
-	def closed 
-		@tickets = Ticket.where(ticket_status: 2)
-		respond_to do |format|
-			format.js
-		end
+	def closed_tickets
+		@tickets = Ticket.where('user_id = ? and ticket_status = ?', session[:user_id], 2).order("updated_at DESC")
+		render partial: 'closed', locals: { tickets: @tickets}
+	end
+	def open_tickets 
+		@tickets = Ticket.where('user_id = ? and ticket_status = ? ', session[:user_id], 1).order("updated_at DESC")
+		render partial: 'open'
+	end
+	def test
+		@tickets = Ticket.where('user_id = ? and ticket_status = ? ', session[:user_id], 1).order("updated_at DESC")
+		render partial: 'open', locals: { tickets: @tickets}
 	end
 	def create
 		user = User.find(session[:user_id])
@@ -45,7 +52,7 @@ class TicketsController < ApplicationController
 	
 	def index
 		if session[:user_id]
-			@tickets = Ticket.where("user_id = ? and ticket_status = ?", session[:user_id], 1).order("created_at DESC")
+			@tickets = Ticket.where('user_id = ? and ticket_status = ? ', session[:user_id], 1).order("updated_at DESC")
 		else
 			redirect_to root_path
 		end

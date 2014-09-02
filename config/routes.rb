@@ -3,7 +3,9 @@ Rails.application.routes.draw do
    get '/tickets/closed'           => 'tickets#closed', as: 'closed_tickets'
    post '/users/authenticate'      => 'users#authenticate', as: 'authenticate_user'
    get '/users/validate/:username' => 'users#validate', as: 'validate_user'
-   get 'users/logout'              => 'users#logout', as: "logout_user" 
+   get '/users/logout'             => 'users#logout', as: "logout_user" 
+   get '/tickets/closed_ajax'      => 'tickets#closed_tickets', as: 'closed_ajax'
+   get '/tickets/open_ajax'        => 'tickets#test', as: 'open_ajax'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

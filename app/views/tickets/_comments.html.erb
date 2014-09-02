@@ -17,6 +17,7 @@
 		<div class="inputs">
 			<%= f.submit "Submit", class: "frm-ctrl btn btn-main" %>
 		</div>
+		<%= f.hidden_field :user_id, :value => session[:user_id] %>
 		<% end %>
 	</div>
 </div>

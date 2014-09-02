@@ -25,11 +25,12 @@ class UsersController < ApplicationController
 		@user = User.new(user_params) 
 
 		# store user id in session
-		session[:user_id] = @user.id
-		session[:username] = @user.username
+
 
 		if @user.save
-			redirect_to user_tickets_path(:user)
+			session[:user_id] = @user.id
+			session[:username] = @user.username
+			redirect_to user_tickets_path(session[:user_id])
 		else
 			redirect_to root_path, notice: "That username is already taken";
 		end

@@ -1,11 +1,11 @@
 <ul class ="nav">
 	<li><%= link_to 'Dashboard', user_tickets_path(session[:user_id]) %></li>
 	<li><%= link_to 'Submit', new_user_ticket_path(session[:user_id]) %></li>
-	<li><%= link_to "Closed Tickets", closed_tickets_path, :remote => true %></li>
 	<li><%= link_to "Log Out", logout_user_path %></li>
 </ul>
 
-<div class="form-panel ticket-table" id="main-table"> 
-	<%= render partial: 'index', locals: {tickets: @tickets} %>
+<div class="form-panel ticket-table" id="main-table">
+	<%= render partial: 'index'%>
 </div>
 <img src="/images/loading.gif" style="display:none" id="ticket-loading">
+
