@@ -10,6 +10,7 @@
 			</div> 
 		<% end %>
 	</div>
+	<div>
 		<%= form_for ([@ticket, @ticket.comments.build]) do |f| %>
 		<div class="inputs">
 			<%= f.text_area :body, class: "frm-ctrl txt" %> 

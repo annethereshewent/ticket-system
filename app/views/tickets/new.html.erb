@@ -1,5 +1,5 @@
 
-<%= form_for [@user, :ticket] do |f| %> 
+<%= form_for [@user, @user.tickets.build] do |f| %> 
 	<div class="form-panel">
 		<h2>Ticket - New</h2>
 		<div class="inputs">
@@ -18,5 +18,5 @@
 			<%= f.submit "Submit", class: "frm-ctrl btn btn-main" %> 
 		</div>
 	</div>
-	<%= link_to('Back', user_tickets_path(session[:userid]), style: "margin-left:220px") %>
+	<%= link_to 'Back', user_tickets_path(session[:user_id]), style: "margin-left:220px" %>
 <% end %>

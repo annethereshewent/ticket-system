@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 	def index
+		if defined? session[:user_id]
+			@user = User.find(session[:user_id])
+			redirect_to user_tickets_path(@user)
+		end
 
 	end
 	def authenticate

@@ -23,17 +23,13 @@ class TicketsController < ApplicationController
 			render 'edit'
 		end
 	end  
-	def closed_tickets
+	def closed
 		@tickets = Ticket.where('user_id = ? and ticket_status = ?', session[:user_id], 2).order("updated_at DESC")
-		render partial: 'closed', locals: { tickets: @tickets}
+		render partial: 'closed'
 	end
-	def open_tickets 
+	def open 
 		@tickets = Ticket.where('user_id = ? and ticket_status = ? ', session[:user_id], 1).order("updated_at DESC")
 		render partial: 'open'
-	end
-	def test
-		@tickets = Ticket.where('user_id = ? and ticket_status = ? ', session[:user_id], 1).order("updated_at DESC")
-		render partial: 'open', locals: { tickets: @tickets}
 	end
 	def create
 		user = User.find(session[:user_id])

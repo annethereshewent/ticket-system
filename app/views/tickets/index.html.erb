@@ -5,7 +5,7 @@
 </ul>
 
 <div class="form-panel ticket-table" id="main-table">
-	<%= render partial: 'index'%>
+	<%= render partial: 'open', locals: {tickets: @tickets}%>
 </div>
 <img src="/images/loading.gif" style="display:none" id="ticket-loading">
 
