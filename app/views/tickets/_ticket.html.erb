@@ -1,0 +1,17 @@
+
+<div class="form-panel">
+	<%= @ticket.ticket_status == 2 ? '<h2 style="text-align:center">**CLOSED**</h2>'.html_safe : "" %> 
+	<h2><%= @ticket.title %></h2>
+	<p><b>Application:</b> <%= Application.find(@ticket.application).name %></p> 
+	<div id="ticket-summary">
+		<p><b>Summary:</b> <%= @ticket.summary %>
+	</div>
+	<p><a style="font-size:12px" href="#" onClick="editTicket();return false;">Edit Ticket Info</a></p>
+</div>
+<script>
+
+function editTicket() {	
+	$("#ticket-container").html("<%= escape_javascript(render partial: 'edit', locals: { ticket: @ticket}) %>");
+}
+
+</script>

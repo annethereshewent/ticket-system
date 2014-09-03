@@ -17,10 +17,11 @@ class TicketsController < ApplicationController
 		@ticket = user.tickets.find(params[:id])
 
 		if @ticket.update(ticket_params)
-			@tickets = Ticket.all
-			redirect_to tickets_path
-		else 
+			@applications = Application.all
+			@t_statuses = TicketStatus.all
 			render 'edit'
+		else 
+			render 'edit', alert: "An error has occurred"
 		end
 	end  
 	def closed
