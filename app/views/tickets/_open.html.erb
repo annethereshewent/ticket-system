@@ -31,5 +31,17 @@
 		<% color = color == 0 ? 1 : 0 %>
 	<% end %> 
 </table>
-
-<script src="/javascripts/tickets.js"></script>
+<script>
+$(document).ready(function() {
+	$("#status_closed").click(function() {
+		$("#ticket-loading").show();
+		var user_id = "<%= params[:user_id] %>"
+		$.get('/users/' + user_id + '/tickets/closed', function(data) {
+			$("#ticket-loading").hide();
+			$("#main-table").hide();
+			$("#main-table").html(data);
+			$("#main-table").fadeIn(500).show();
+		});
+	});
+});
+</script>

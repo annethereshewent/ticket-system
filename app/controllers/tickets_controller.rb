@@ -25,11 +25,11 @@ class TicketsController < ApplicationController
 		end
 	end  
 	def closed
-		@tickets = Ticket.where('user_id = ? and ticket_status = ?', session[:user_id], 2).order("updated_at DESC")
+		@tickets = Ticket.where('user_id = ? and ticket_status = ?', params[:user_id], 2).order("updated_at DESC")
 		render partial: 'closed'
 	end
 	def open 
-		@tickets = Ticket.where('user_id = ? and ticket_status = ? ', session[:user_id], 1).order("updated_at DESC")
+		@tickets = Ticket.where('user_id = ? and ticket_status = ? ', params[:user_id], 1).order("updated_at DESC")
 		render partial: 'open'
 	end
 	def create

@@ -1,6 +1,6 @@
 <div id="ticket-container">
 	<%= render partial: 'ticket', locals: {ticket: @ticket} %>
 </div>
-<%= link_to 'Back', tickets_path, style: "margin-left:220px" %>
+<%= link_to 'Back', user_tickets_path(params[:user_id]), style: "margin-left:220px" %>
 <%= render partial: 'comments', locals: {ticket: @ticket} %>
-<%= link_to 'Back', tickets_path, style: "margin-left:220px" %>
+<%= link_to 'Back', user_tickets_path(params[:user_id]), style: "margin-left:220px" %>
