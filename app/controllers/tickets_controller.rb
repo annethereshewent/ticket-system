@@ -49,7 +49,8 @@ class TicketsController < ApplicationController
 	
 	def index
 		if session[:user_id]
-			@tickets = Ticket.where('user_id = ? and ticket_status = ? ', session[:user_id], 1).order("updated_at DESC")
+			@tickets = Ticket.where('user_id = ? and ticket_status = ? ', params[:user_id], 1).order("updated_at DESC")
+			@users = User.all
 		else
 			redirect_to root_path
 		end

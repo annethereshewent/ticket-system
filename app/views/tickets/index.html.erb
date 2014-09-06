@@ -3,7 +3,12 @@
 	<li><%= link_to 'Submit', new_user_ticket_path(session[:user_id]) %></li>
 	<li><%= link_to "Log Out", logout_user_path %></li>
 </ul>
-
+<aside class="sidebar">
+	<h2>Users:</h2>
+	<% @users.each do |user| %>
+		<p class="user-link"><%= link_to user.username, user_tickets_path(user.id) %></p>
+	<% end %>
+</aside>
 <div class="form-panel ticket-table" id="main-table">
 	<%= render partial: 'open', locals: {tickets: @tickets}%>
 </div>
