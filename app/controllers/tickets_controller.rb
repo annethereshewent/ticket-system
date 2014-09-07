@@ -44,7 +44,8 @@ class TicketsController < ApplicationController
 	def edit
 		@applications = Application.all
 		@t_statuses = TicketStatus.all
-		@ticket = Ticket.find(params[:id])	
+		@ticket = Ticket.find(params[:id])
+		@user = User.find(session[:user_id])	
 	end
 	
 	def index

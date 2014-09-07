@@ -66,6 +66,7 @@ end
 TicketSystem::Application.routes.draw do 
   resources :users do
     resources :tickets
+    resources :comments
   end
   resources :tickets do
     resources :comments

@@ -11,14 +11,14 @@
 		<% end %>
 	</div>
 	<div>
-		<%= form_for ([@ticket, @ticket.comments.build]) do |f| %>
+		<%= form_for ([@user, @user.comments.build]) do |f| %>
 		<div class="inputs">
 			<%= f.text_area :body, class: "frm-ctrl txt" %> 
 		</div>
 		<div class="inputs">
 			<%= f.submit "Submit", class: "frm-ctrl btn btn-main" %>
 		</div>
-		<%= f.hidden_field :user_id, :value => session[:user_id] %>
+		<%= f.hidden_field :ticket_id, :value => @ticket.id %>
 		<% end %>
 	</div>
 </div>
